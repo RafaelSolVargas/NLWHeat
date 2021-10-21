@@ -17,14 +17,14 @@ const serverHttp = http.createServer(app)
 const io = new Server(serverHttp, {
     cors: { origin: '*' }
 })
+
 io.on('connection', socket => {
-    socket.emit("hello", "world");
     console.log(`Usuário conectado no socket ${socket.id}`)
 })
-
-io.on('To aqui', socket => {
-    console.log('Message Event Emitted')
+io.on('disconnect', socket => {
+    console.log(`Usuário desconectado no socket ${socket.id}`)
 })
+
 
 const clientId = process.env.GITHUB_CLIENT_ID
 app.get('/github', (req, res) => {

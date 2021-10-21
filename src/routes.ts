@@ -3,6 +3,7 @@ import { AuthenticateUserController } from "./controllers/AuthenticateUserContro
 import { CreateMessageController } from "./controllers/CreateMessageController";
 import { Get3lastMessagesController } from "./controllers/GetLast3MessagesController";
 import { GetProfileUserController } from "./controllers/GetProfileUserController";
+import { GetUserProfileController } from "./controllers/GetUserProfileController";
 import { isAuthenticated } from "./middleware/isAuthenticated";
 
 const router = Router()
@@ -15,6 +16,7 @@ router.post('/messages',
 
 router.get('/messages/last3', new Get3lastMessagesController().handle)
 router.get('/users/:user_id', new GetProfileUserController().handle)
+router.get('/profile', isAuthenticated, new GetUserProfileController().handle)
 
 
 export { router };

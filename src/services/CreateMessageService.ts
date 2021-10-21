@@ -15,6 +15,7 @@ class CreateMessageService {
         })
 
         const infoWS = {
+            id: message.id,
             text: message.text,
             user_id: message.user_id,
             created_at: message.created_at,
@@ -24,6 +25,7 @@ class CreateMessageService {
             }
         }
 
+        console.log('Cheguei aqui')
         io.emit('new_message', infoWS)
 
         return message
